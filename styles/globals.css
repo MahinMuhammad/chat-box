@@ -143,6 +143,12 @@ body {
 
 /*button ends*/
 
+.preChatBox{
+  margin-top: 50px;
+  width: 30%;
+  margin-left: 45%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
