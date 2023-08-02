@@ -4,6 +4,14 @@ export default function Home() {
   const [forUserA, setforUserA] = useState('');
   const [forUserB, setforUserB] = useState('');
 
+  const[chatHistory,setchatHistory]=useState([])
+
+  const fetchchatHistory= async()=>{
+    const response= await fetch('/api/History')
+    const data=await response.json()
+    setchatHistory(data)
+  }
+
   return (
     <>
       <div className="container">
@@ -33,7 +41,17 @@ export default function Home() {
               </tr>
             </tbody>
           </table>
-          <button id='prevButton'>Previous</button>
+          <button onClick={fetchchatHistory} id='prevButton'>Previous</button>
+          <div className='preChatBox'>
+            {chatHistory.map(chat=>{  
+      
+              return(
+                <div>{chat.text}</div>
+                )
+
+              }
+          )}
+          </div>
       </div>
     </>
   )
